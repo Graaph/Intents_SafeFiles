@@ -64,14 +64,20 @@ public class MainActivity extends AppCompatActivity {
 
         Data newdata = new Data (editText.getText().toString());
         datenliste.add(newdata);
+        /**
+         * Soll hier noch irgendwo die datei geschrieben werden? also per FileWriter.saveFile(Name)?
+         * Wenn nicht wird man bei dem folgendedn "ShowMe" Fenster beim laden nur einen error haben wenn es das file nicht gibt...
+         * Bzw. Android macht einfach garnichts und behält den error für sich.
+         */
+
+
         senddata();
     }
 
     //change activity to ShowMe Class
     public void ShowMeActivity(View v) {
-Intent intent = new Intent(this, ShowMe.class);
-startActivity(intent);
-
+        Intent intent = new Intent(this, ShowMe.class);
+        startActivity(intent);
     }
 
     public void senddata(){

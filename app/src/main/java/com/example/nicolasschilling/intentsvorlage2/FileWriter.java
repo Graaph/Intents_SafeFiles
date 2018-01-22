@@ -23,7 +23,7 @@ import static android.content.ContentValues.TAG;
 
 public class FileWriter {
     final static String fileName ="file.txt";
-        final static String path = "NotizAppDirectory";
+    final static String path = "NotizAppDirectory";
 
 
 
@@ -82,9 +82,15 @@ public class FileWriter {
 
 
     String readFile(String fileName) {
+
         StringBuilder sb = new StringBuilder();
+
         try {
-            BufferedReader br = new BufferedReader(new FileReader(fileName));
+
+            File directory = new File(Environment.getExternalStorageDirectory(), this.path);
+            File txt_file = new File(directory, fileName);
+
+            BufferedReader br = new BufferedReader(new FileReader(txt_file));
 
             String line = br.readLine();
 

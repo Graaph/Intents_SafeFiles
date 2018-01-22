@@ -46,7 +46,7 @@ public class ShowMe extends AppCompatActivity {
         //txtview.setText(my_data.get(0).describeContents());
     } */
 
-    private void loadData(){
+    public void loadData(View v){
         FileWriter reader = new FileWriter();
         String ausgabe = reader.readFile("file.txt");
 
