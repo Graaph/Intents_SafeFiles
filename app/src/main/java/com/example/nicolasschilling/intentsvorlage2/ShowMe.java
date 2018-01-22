@@ -53,7 +53,6 @@ public class ShowMe extends AppCompatActivity {
         txtview.setText(ausgabe);
     }
 
-
 }
 
 
