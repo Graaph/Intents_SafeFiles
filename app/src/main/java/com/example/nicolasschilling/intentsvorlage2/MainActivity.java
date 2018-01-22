@@ -15,11 +15,9 @@ import java.util.Scanner;
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
-    Button safebtn;
     Button filesafebtn;
     Button showMebtn;
-    ArrayList<Data> datenliste = new ArrayList<>();
-    public static final String parKEY = "parKey";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,13 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Get the items
         editText = (EditText) findViewById(R.id.editText);
-        safebtn = (Button) findViewById(R.id.safebtn); //Hier war ein leerzeichen nach dem R.id. .. ka ob das was macht :D
         filesafebtn = (Button) findViewById(R.id.filesafebtn);
         showMebtn = (Button) findViewById(R.id.showMebtn);
 
 
     }
-
 
 
 
@@ -53,39 +49,20 @@ public class MainActivity extends AppCompatActivity {
         } else {
             Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
         }
+
+        Intent intent = new Intent(this, ShowMe.class);
+            startActivity(intent);
     }
 
 
 
-    //Save button
-    public void ButtonWasClicked(View v){
-        //Get the filed again
-        editText = (EditText) findViewById(R.id.editText);
 
-        Data newdata = new Data (editText.getText().toString());
-        datenliste.add(newdata);
-        /**
-         * Soll hier noch irgendwo die datei geschrieben werden? also per FileWriter.saveFile(Name)?
-         * Wenn nicht wird man bei dem folgendedn "ShowMe" Fenster beim laden nur einen error haben wenn es das file nicht gibt...
-         * Bzw. Android macht einfach garnichts und behält den error für sich.
-         */
-
-
-        senddata();
-    }
 
     //change activity to ShowMe Class
     public void ShowMeActivity(View v) {
         Intent intent = new Intent(this, ShowMe.class);
         startActivity(intent);
     }
-
-    public void senddata(){
-        Intent myIntent = new Intent (MainActivity.this, ShowMe.class);
-        myIntent.putExtra(parKEY, this.datenliste); //Dadurch das wir das Serializable gemacht haben kann man das einfach rein tun
-        startActivity(myIntent);
-    }
-
 
 
 

@@ -17,19 +17,6 @@
         tools:text="Name" />
 
     <Button
-        android:id="@+id/safebtn"
-        android:layout_width="305dp"
-        android:layout_height="66dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filesafebtn"
-        android:layout_marginTop="29dp"
-        android:onClick="ButtonWasClicked"
-        android:text="SAFE"
-        tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="343dp"
-        tools:text="safe" />
-
-    <Button
         android:id="@+id/filesafebtn"
         android:layout_width="305dp"
         android:layout_height="66dp"

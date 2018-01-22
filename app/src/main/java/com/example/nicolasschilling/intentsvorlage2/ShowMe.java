@@ -14,7 +14,6 @@ public class ShowMe extends AppCompatActivity {
 
     TextView txtview;
     Button loadbtn;
-    ArrayList<Data> my_data;
 
 
     @Override
@@ -25,37 +24,25 @@ public class ShowMe extends AppCompatActivity {
         loadbtn = (Button) findViewById(R. id.loadbtnanzeige);
         txtview = (TextView) findViewById(R. id. textViewAnzeige);
 
-        //Wir laden mal Data gleich am anfang...
-        //my_data = (ArrayList<Data>) getIntent().getSerializableExtra(MainActivity.parKEY);
 
-        //System.out.println("Intent Extra First Entry: " + my_data.get(0).describeContents());
-
-        //Filling Screen with loaded Data from .txt-file
-
-
+        //Data from the .txt-file is printed out once the activity is opened
+loadData();
     }
 
 
 
-   /* //LOADDATA
-    public void loadData(View v) {
+    public void reloadData(View v){
+        FileWriter reader = new FileWriter();
+        String ausgabe = reader.readFile("file.txt");
 
-        txtview = (TextView) findViewById(R.id.textView);
-        loadbtn = (Button) findViewById(R.id.loadbtn);
-
-        //txtview.setText(my_data.get(0).describeContents());
-    } */
-
-    public void loadData(View v){
+        txtview.setText(ausgabe);
+    }
+    public void loadData(){
         FileWriter reader = new FileWriter();
         String ausgabe = reader.readFile("file.txt");
 
         txtview.setText(ausgabe);
     }
 
+
 }
-
-
-
-
-
