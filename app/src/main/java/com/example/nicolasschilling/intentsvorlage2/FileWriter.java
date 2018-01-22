@@ -25,7 +25,6 @@ public class FileWriter {
     final static String fileName ="file.txt";
         final static String path = "NotizAppDirectory";
 
-    List <String>  noteID = new ArrayList<>();
 
 
 
@@ -60,7 +59,7 @@ public class FileWriter {
             //Writing the String filedata on storage
             FileOutputStream fileOutputStream = new FileOutputStream(file, true);
             System.out.println("Writing bytes");
-            fileOutputStream.write((filedata + noteID +"\n").getBytes());
+            fileOutputStream.write((filedata +"\n").getBytes());
             System.out.println("Closing");
             //Closing the file
             fileOutputStream.close();
