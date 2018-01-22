@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class ShowMe extends AppCompatActivity {
@@ -21,24 +22,38 @@ public class ShowMe extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showme);
 
-        //Wir laden mal Data gleich am anfang...
-        my_data = (ArrayList<Data>) getIntent().getSerializableExtra(MainActivity.parKEY);
+        loadbtn = (Button) findViewById(R. id.loadbtnanzeige);
+        txtview = (TextView) findViewById(R. id. textViewAnzeige);
 
-        System.out.println("Intent Extra First Entry: " + my_data.get(0).describeContents());
+        //Wir laden mal Data gleich am anfang...
+        //my_data = (ArrayList<Data>) getIntent().getSerializableExtra(MainActivity.parKEY);
+
+        //System.out.println("Intent Extra First Entry: " + my_data.get(0).describeContents());
+
+        //Filling Screen with loaded Data from .txt-file
 
 
     }
 
 
 
-    //LOADDATA
+   /* //LOADDATA
     public void loadData(View v) {
 
         txtview = (TextView) findViewById(R.id.textView);
         loadbtn = (Button) findViewById(R.id.loadbtn);
 
-        txtview.setText(my_data.get(0).describeContents());
+        //txtview.setText(my_data.get(0).describeContents());
+    } */
+
+    private void loadData(){
+        FileWriter reader = new FileWriter();
+        String ausgabe = reader.readFile("file.txt");
+
+        txtview.setText(ausgabe);
     }
+
+
 }
 
 

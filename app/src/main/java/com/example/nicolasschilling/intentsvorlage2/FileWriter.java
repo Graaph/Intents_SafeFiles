@@ -2,11 +2,18 @@ package com.example.nicolasschilling.intentsvorlage2;
 
 import android.os.Environment;
 import android.util.Log;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import static android.content.ContentValues.TAG;
 
@@ -15,19 +22,18 @@ import static android.content.ContentValues.TAG;
  */
 
 public class FileWriter {
-    final static String fileName ="file2.txt";
+    final static String fileName ="file.txt";
+        final static String path = "NotizAppDirectory";
 
-        final static String path = "directory";
+    List <String>  noteID = new ArrayList<>();
 
 
 
     public boolean saveFile(String filedata){
 
-        try{
-            //Dynamisch "file" generieren
 
-            // "File" Object which contains path
-            // new File(Pfad_irgendwo_hin, von_dort_dann_hier_hin)... damit lässt sich schön einfach, aber garantiert richtig ein pfad zum anderen "addieren"
+        try{
+
             File directory = new File(Environment.getExternalStorageDirectory(), this.path);
 
 
@@ -54,7 +60,7 @@ public class FileWriter {
             //Writing the String filedata on storage
             FileOutputStream fileOutputStream = new FileOutputStream(file, true);
             System.out.println("Writing bytes");
-            fileOutputStream.write((filedata + "\n").getBytes());
+            fileOutputStream.write((filedata + noteID +"\n").getBytes());
             System.out.println("Closing");
             //Closing the file
             fileOutputStream.close();
@@ -71,4 +77,34 @@ public class FileWriter {
         }
         return true;
     }
+
+
+
+
+
+    String readFile(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+
+            String line = br.readLine();
+
+            while (line != null) {
+                sb.append(line);
+                sb.append("\n");
+                line = br.readLine();
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sb.toString();
+    }
+
+
+
+
+
+
+
 }

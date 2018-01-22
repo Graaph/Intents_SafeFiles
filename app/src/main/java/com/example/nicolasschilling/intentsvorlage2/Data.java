@@ -1,7 +1,6 @@
 package com.example.nicolasschilling.intentsvorlage2;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+
 
 import java.io.Serializable;
 

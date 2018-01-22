@@ -42,4 +42,14 @@
         tools:layout_editor_absoluteY="343dp"
         tools:text="FILESAFE" />
 
+    <Button
+        android:id="@+id/showMebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText"
+        android:layout_marginStart="66dp"
+        android:onClick="ShowMeActivity"
+        android:text="ANZEIGE" />
+
 </RelativeLayout>
