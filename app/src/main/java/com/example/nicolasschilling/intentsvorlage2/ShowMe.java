@@ -1,8 +1,11 @@
 package com.example.nicolasschilling.intentsvorlage2;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -18,6 +21,15 @@ public class ShowMe extends AppCompatActivity {
     Button loadbtn;
     ListView listview;
 
+
+
+
+
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +41,39 @@ public class ShowMe extends AppCompatActivity {
 
         //Data from the .txt-file is printed out once the activity is opened
 loadData();
+
+
+
+
+
+
+
+
+
+
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+
+                //String selectedFromList = (listview.getItemAtPosition(position).toString());
+edit(listview.getItemAtPosition(position).toString());
+
+
+                Toast.makeText(getApplicationContext(), ((TextView) view).getText(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
     }
+
+
+
+
+
 
 
 
@@ -48,5 +92,16 @@ loadData();
        listview.setAdapter(listadapter);
     }
 
+    private void edit(String note){
+
+        Toast.makeText(this, note, Toast.LENGTH_SHORT).show();
+
+    }
+
+
+
 
 }
+
+
+

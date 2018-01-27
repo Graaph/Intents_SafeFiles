@@ -51,9 +51,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
     //Filesave button
     public void FileSave(View v){
 
