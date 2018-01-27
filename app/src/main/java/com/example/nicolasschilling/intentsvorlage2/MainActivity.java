@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ShareActionProvider;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
         filesafebtn = (Button) findViewById(R.id.filesafebtn);
         showMebtn = (Button) findViewById(R.id.showMebtn);
 
+        //Instance of EditNote
+        EditNote editNote = new EditNote("");
+
+
+        //Show the edit-Data in case something was edited
+        if ((EditNote) getIntent().getSerializableExtra(ShowMe.parKEY) != null ) {
+            editNote = (EditNote) getIntent().getSerializableExtra(ShowMe.parKEY);
+            editText.setText(editNote.getNote());
+
+        }
 
     }
 

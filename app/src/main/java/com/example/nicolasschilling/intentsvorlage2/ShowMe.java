@@ -20,6 +20,7 @@ public class ShowMe extends AppCompatActivity {
     TextView txtview;
     Button loadbtn;
     ListView listview;
+    public static final String parKEY = "parKey";
 
 
 
@@ -94,14 +95,24 @@ edit(listview.getItemAtPosition(position).toString());
 
     private void edit(String note){
 
-        Toast.makeText(this, note, Toast.LENGTH_SHORT).show();
+
+        EditNote editnote = new EditNote(note);
+        Intent myIntent = new Intent (ShowMe.this, MainActivity.class);
+        myIntent.putExtra(parKEY, editnote); //Dadurch das wir das Serializable gemacht haben kann man das einfach rein tun :)
+        startActivity(myIntent);
+        }
+
+
+
+
+
 
     }
 
 
 
 
-}
+
 
 
 
