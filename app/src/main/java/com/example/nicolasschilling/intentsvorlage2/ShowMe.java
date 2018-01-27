@@ -93,8 +93,9 @@ edit(listview.getItemAtPosition(position).toString());
     public void loadData(){
         FileWriter reader = new FileWriter();
 
-       String[] liste = reader.readFile("file.txt").split("\n");
-
+        String[] liste = reader.readFile("file.txt").split("\n");//split .txt at linechange
+        List<String> listelist = Arrays.asList(liste);
+        Collections.reverse(listelist);
        ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,liste);
        listview.setAdapter(listadapter);
     }
