@@ -13,7 +13,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ShowMe extends AppCompatActivity {
 
@@ -80,15 +84,17 @@ edit(listview.getItemAtPosition(position).toString());
 
     public void reloadData(View v){
         FileWriter reader = new FileWriter();
-
         String[] liste = reader.readFile("file.txt").split("\n");//split .txt at linechange
-        ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,liste);
+        List<String> listelist = Arrays.asList(liste);
+        Collections.reverse(listelist);
+        ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,listelist);
         listview.setAdapter(listadapter);
     }
     public void loadData(){
         FileWriter reader = new FileWriter();
 
        String[] liste = reader.readFile("file.txt").split("\n");
+
        ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,liste);
        listview.setAdapter(listadapter);
     }
