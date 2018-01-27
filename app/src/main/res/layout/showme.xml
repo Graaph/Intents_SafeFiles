@@ -5,7 +5,9 @@
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nicolasschilling.intentsvorlage2.ShowMe">
+    tools:context="com.example.nicolasschilling.intentsvorlage2.ShowMe"
+    tools:ignore="ExtraText"
+    android:background="@drawable/paper2">
 
     <TextView
         android:id="@+id/textViewAnzeige"
@@ -21,21 +23,23 @@
 
     <Button
         android:id="@+id/loadbtnanzeige"
-        android:layout_width="251dp"
-        android:layout_height="73dp"
+        android:layout_width="150dp"
+        android:layout_height="33dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="116dp"
         android:layout_marginTop="396dp"
+        android:background="@color/colorAccent"
         android:onClick="reloadData"
         android:text="RELOAD"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.662"
         tools:text="load" />
 
     <ListView
         android:id="@+id/listviewanzeige"
-        android:layout_width="320dp"
+        android:layout_width="298dp"
         android:layout_height="377dp"
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="8dp"

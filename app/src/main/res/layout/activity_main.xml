@@ -4,12 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.nicolasschilling.intentsvorlage2.MainActivity">
+    tools:context="com.example.nicolasschilling.intentsvorlage2.MainActivity"
+    android:background="@drawable/paper2">
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="279dp"
         android:layout_height="266dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:inputType="textPersonName"
         tools:layout_editor_absoluteX="16dp"
@@ -20,9 +24,10 @@
         android:id="@+id/filesafebtn"
         android:layout_width="305dp"
         android:layout_height="66dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText"
-        android:layout_marginTop="52dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="34dp"
+        android:background="@color/colorAccent"
         android:onClick="FileSave"
         android:text="FILESAFE"
         tools:layout_editor_absoluteX="32dp"
@@ -33,9 +38,10 @@
         android:id="@+id/showMebtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText"
-        android:layout_marginStart="66dp"
+        android:layout_above="@+id/filesafebtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="29dp"
+        android:background="@color/colorAccent"
         android:onClick="ShowMeActivity"
         android:text="ANZEIGE" />
 
