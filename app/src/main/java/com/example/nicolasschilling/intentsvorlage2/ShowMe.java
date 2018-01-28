@@ -1,6 +1,7 @@
 package com.example.nicolasschilling.intentsvorlage2;
 
 import android.content.Intent;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,14 +11,21 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class ShowMe extends AppCompatActivity {
 
-    TextView txtview;
-    Button menubtn, editbtn, deletebtn;
+
+    Button menubtn, editbtn, deletebtn,sharebtn;
 
     ListView listview;
     public static final String parKEY = "parKey";
@@ -35,11 +43,10 @@ public class ShowMe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.showme);
-
+        sharebtn =(Button)findViewById(R.id.sharebtn);
         menubtn = (Button) findViewById(R. id.loadbtnanzeige);
         editbtn = (Button) findViewById(R. id.editbtn);
         deletebtn = (Button) findViewById(R. id.deletetbn);
-        txtview = (TextView) findViewById(R. id. textViewAnzeige);
         listview =(ListView) findViewById(R. id.listviewanzeige);
 
         //Data from the .txt-file is printed out once the activity is opened
@@ -109,7 +116,12 @@ menubtn.setOnClickListener(new View.OnClickListener() {
             }
         });
 
-
+       sharebtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               sharefnc(noteposition);
+           }
+       });
 
 
     }
@@ -184,32 +196,31 @@ menubtn.setOnClickListener(new View.OnClickListener() {
     public void share(String sharetxt) {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, sharetxt);
+        sendIntent.putExtra(Intent.EXTRA_TEXT,sharetxt);
         sendIntent.setType("text/plain");
-        try {
-            startActivity(Intent.createChooser(sendIntent, "Select an action"));
-        } catch (android.content.ActivityNotFoundException ex) {
+        startActivity(Intent.createChooser(sendIntent, "Select an action"));
 
-        }
 
     }
 
 
     public void sharefnc (int positon){
-        try (BufferedReader br = new BufferedReader(new InputStreamReader((new FileInputStream("file.txt"))))) {
+        File directory = new File(Environment.getExternalStorageDirectory(), "NotizAppDirectory");
+        File file = new File(directory, "file.txt");
+        try (BufferedReader br = new BufferedReader(new InputStreamReader((new FileInputStream(file))))) {
 
             int counter = 0;
-            String line = null;
+            String line ;
             while ((line = br.readLine()) != null) {
-                if (counter == listsize-positon) {
+                if (counter == (listsize-positon)) {
 
                 share(line);
-
+                br.close();
                 }
                 counter++;
             }
 
-            br.close();
+
 
 
 

@@ -9,18 +9,6 @@
     tools:context="com.example.nicolasschilling.intentsvorlage2.ShowMe"
     tools:ignore="ExtraText">
 
-    <TextView
-        android:id="@+id/textViewAnzeige"
-        android:layout_width="0dp"
-        android:layout_height="209dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="invisible" />
-
 
     <Button
         android:id="@+id/loadbtnanzeige"
@@ -83,5 +71,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/sharebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="16dp"
+        android:text="Share"
+        app:layout_constraintBottom_toTopOf="@+id/editbtn"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
