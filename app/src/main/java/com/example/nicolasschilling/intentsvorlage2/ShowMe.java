@@ -122,4 +122,53 @@ edit(listview.getItemAtPosition(position).toString(), position);
 
 
 
+
+
+
+    //Share-Funktion
+    public void share(String sharetxt) {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, sharetxt);
+        sendIntent.setType("text/plain");
+        try {
+            startActivity(Intent.createChooser(sendIntent, "Select an action"));
+        } catch (android.content.ActivityNotFoundException ex) {
+
+        }
+
     }
+
+
+    public void sharefnc (int positon){
+        try (BufferedReader br = new BufferedReader(new InputStreamReader((new FileInputStream("file.txt"))))) {
+
+            int counter = 0;
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                if (counter == listsize-positon) {
+
+                share(line);
+
+                }
+                counter++;
+            }
+
+            br.close();
+
+
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+}
+
+
+
