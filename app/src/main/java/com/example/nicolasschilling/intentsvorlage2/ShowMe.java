@@ -212,7 +212,7 @@ menubtn.setOnClickListener(new View.OnClickListener() {
             int counter = 0;
             String line ;
             while ((line = br.readLine()) != null) {
-                if (counter == (listsize-positon)) {
+                if (counter == (listsize-1-positon)) {
 
                 share(line);
                 br.close();
