@@ -1,10 +1,13 @@
 package com.example.nicolasschilling.intentsvorlage2;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,7 +25,14 @@ public class MainActivity extends AppCompatActivity {
     String notebuffer;
 
 
-
+    // Hide Keyboard if user touches screen
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+    }
 
 
     @Override
@@ -34,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.editText);
         filesafebtn = (Button) findViewById(R.id.filesafebtn);
         showMebtn = (Button) findViewById(R.id.showMebtn);
+
+
+
+
 
 
 EditNote editNote;
