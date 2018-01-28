@@ -15,7 +15,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="27dp"
         tools:text="Name" />

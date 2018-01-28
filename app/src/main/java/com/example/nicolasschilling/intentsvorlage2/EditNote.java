@@ -10,19 +10,23 @@ import java.io.Serializable;
 public class EditNote implements Serializable {
 
 private String note;
+private Boolean editing;
 
     //Konstruktor
-EditNote(String editnote){
+EditNote(String editnote, boolean editing){
     this.note = editnote;
+    this.editing=editing;
 }
 
 
+    public boolean getEditing(){
+        return editing;
+    }
 
 
-public String getNote(){
+    public String getNote(){
     return note;
 }
-
 
 
 }

@@ -24,6 +24,9 @@ public class ShowMe extends AppCompatActivity {
     int listsize=0; //Number of notes, gets updated by loadData()
     int noteposition=-1; //Position of selected note
 
+    boolean editing =false;//is true when note is being edited
+
+
 
 
 
@@ -40,7 +43,35 @@ public class ShowMe extends AppCompatActivity {
         listview =(ListView) findViewById(R. id.listviewanzeige);
 
         //Data from the .txt-file is printed out once the activity is opened
+        //Checks if there was something edited and "Notes"-Button was pressed without changing
 loadData();
+
+
+
+
+
+        if ((EditNote) getIntent().getSerializableExtra(MainActivity.parKEY) != null ) {
+
+            //checks if something was edited
+            //Get Intent from other activity with Note object
+
+            EditNote editNote;
+            editNote = (EditNote) getIntent().getSerializableExtra(MainActivity.parKEY);
+            editing = editNote.getEditing();
+            if (editing == true) { //is true if sth was edited
+                loadEditingData();
+            } else { //this else is probably useless because it never happens
+                loadData();
+            }
+        }
+
+        else{
+                loadData();
+
+            }
+
+
+
 
 //Listener for menubtn
 menubtn.setOnClickListener(new View.OnClickListener() {
@@ -50,23 +81,26 @@ menubtn.setOnClickListener(new View.OnClickListener() {
     }
 });
 
-
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-
                 noteposition =position;
-
-
             }
         });
 
+//Listener for editbtn
         editbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                edit(listview.getItemAtPosition(noteposition).toString());
+                if (noteposition>=0){
+                edit(listview.getItemAtPosition(noteposition).toString());}
+                else{
+                    Toast.makeText(ShowMe.this, "Plese select note first", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+//Listener for deletebtn
 
         deletebtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,15 +115,15 @@ menubtn.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    public void loadData(){  //possibly not needed any more??
+    public void loadData(){
         FileWriter reader = new FileWriter();
 
         String[] liste = reader.readFile("file.txt").split("\n");//split .txt at linechange
         List<String> listelist = Arrays.asList(liste);
         Collections.reverse(listelist);
-       ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,liste);
-       listview.setAdapter(listadapter);
-       listsize=listelist.size();
+        ArrayAdapter<String> listadapter = new ArrayAdapter<String> (this,android.R.layout.simple_list_item_1,liste);
+        listview.setAdapter(listadapter);
+        listsize=listelist.size();
     }
 
 
@@ -99,29 +133,47 @@ menubtn.setOnClickListener(new View.OnClickListener() {
 
     }
 
-
     private void edit(String note){
-if (noteposition>=0) {
-    EditNote editnote = new EditNote(note);
+
+    //send Note via Intent to other activity
+    EditNote editnote = new EditNote(note, true);
     Intent myIntent = new Intent(ShowMe.this, MainActivity.class);
     myIntent.putExtra(parKEY, editnote);
-    startActivity(myIntent);
+
+    //delete the note from file
     FileWriter fileWriter = new FileWriter();
     fileWriter.delete(listsize-1-noteposition);
-}else{
-    Toast.makeText(this, "Select a note first", Toast.LENGTH_SHORT).show();
+    noteposition=-1;
+    startActivity(myIntent);
 
-}
+
         }
 
     private void delete(){
-        FileWriter fileWriter = new FileWriter();
-        fileWriter.delete((listsize-1)-noteposition);
-        Toast.makeText(this, listsize+","+noteposition+"", Toast.LENGTH_SHORT).show();
-        loadData();
+        if (noteposition>=0) {
+            FileWriter fileWriter = new FileWriter();
+            fileWriter.delete((listsize - 1) - noteposition);
+            loadData();
+            noteposition=-1;
+
+        }
+        else{
+            Toast.makeText(this, "Select note first", Toast.LENGTH_SHORT).show();
+
+        }
     }
 
+    //Function in case something was edited
+    private void loadEditingData(){
 
+        //Get Intent from other activity with Note object
+
+        EditNote editNote;
+        editNote = (EditNote) getIntent().getSerializableExtra(MainActivity.parKEY);
+        FileWriter fileWriter = new FileWriter();
+        fileWriter.saveFile(editNote.getNote().toString());
+        loadData();
+    }
 
 
 
