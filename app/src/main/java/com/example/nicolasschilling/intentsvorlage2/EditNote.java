@@ -1,6 +1,5 @@
 package com.example.nicolasschilling.intentsvorlage2;
 
-import android.widget.EditText;
 
 import java.io.Serializable;
 

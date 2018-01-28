@@ -4,16 +4,11 @@ package com.example.nicolasschilling.intentsvorlage2;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ShareActionProvider;
 import android.widget.Toast;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         if (writer.saveFile(editText.getText().toString())) {
             Toast.makeText(MainActivity.this, "Has been safed", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(MainActivity.this, "ERROR", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "ERROR. Try to authorize Data Usage in App-Settings", Toast.LENGTH_SHORT).show();
         }
 
 
