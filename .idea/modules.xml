@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Androidapp.iml" filepath="$PROJECT_DIR$/Androidapp.iml" />
+      <module fileurl="file://C:\Users\felix\Desktop\EMI\Intents_SafeFiles-master\Androidapp.iml" filepath="C:\Users\felix\Desktop\EMI\Intents_SafeFiles-master\Androidapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Intents_SafeFiles-master.iml" filepath="$PROJECT_DIR$/Intents_SafeFiles-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
